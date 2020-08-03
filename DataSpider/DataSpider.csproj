@@ -75,6 +75,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -125,6 +126,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="CSS\common.css" />
+    <Content Include="CSS\home.css" />
+    <Content Include="Html\home.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -139,4 +145,8 @@
   </Target>
   <Import Project="packages\CefSharp.Common.83.4.20\build\CefSharp.Common.targets" Condition="Exists('packages\CefSharp.Common.83.4.20\build\CefSharp.Common.targets')" />
   <Import Project="packages\CefSharp.WinForms.83.4.20\build\CefSharp.WinForms.targets" Condition="Exists('packages\CefSharp.WinForms.83.4.20\build\CefSharp.WinForms.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>xcopy "$(ProjectDir)Html" "$(TargetDir)Html" /e /i /y
+xcopy "$(ProjectDir)CSS" "$(TargetDir)CSS" /e /i /y</PreBuildEvent>
+  </PropertyGroup>
 </Project>

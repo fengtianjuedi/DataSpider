@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Web;
 
 namespace DataSpider
 {
@@ -62,8 +63,11 @@ namespace DataSpider
                 Application.ApplicationExit += OnApplicationExit;
             }
             CefSharpSettings.LegacyJavascriptBindingEnabled = true;
+
             //控件对象创建
-            CWBrowser = new ChromiumWebBrowser("http://www.baidu.com");
+            Uri uri = new Uri(AppDomain.CurrentDomain.BaseDirectory + @"Html/home.html", UriKind.Absolute);
+            //string url = HttpUtility.HtmlEncode(uri);
+            CWBrowser = new ChromiumWebBrowser(uri.AbsoluteUri);
 
             CWBrowser.LifeSpanHandler = new LifeSpanHandler();//包含连接打开方式
             CWBrowser.JsDialogHandler = new JsDialogHandler();//设置可以弹出js弹框
