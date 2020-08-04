@@ -66,7 +66,6 @@ namespace DataSpider
 
             //控件对象创建
             Uri uri = new Uri(AppDomain.CurrentDomain.BaseDirectory + @"Html/home.html", UriKind.Absolute);
-            //string url = HttpUtility.HtmlEncode(uri);
             CWBrowser = new ChromiumWebBrowser(uri.AbsoluteUri);
 
             CWBrowser.LifeSpanHandler = new LifeSpanHandler();//包含连接打开方式
